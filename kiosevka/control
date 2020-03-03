@@ -1,0 +1,5 @@
+Package: kiosevka
+Version: {{version}}
+Description: kiosevka
+Maintainer: kiwixz
+Architecture: all
