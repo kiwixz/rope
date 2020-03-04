@@ -32,9 +32,9 @@ def package():
         with open(f"{debian_dir}/control", "w") as dst:
             dst.write(src.read().replace("{{version}}", VERSION))
 
-    shutil.copytree("build/foundry/kiosevka/build/ttf", f"{root_dir}/usr/share/fonts/kiosevka")
+    shutil.copytree("build/foundry/kiosevka/build/ttf", f"{root_dir}/usr/share/fonts/truetype/kiosevka")
 
-    subprocess.check_call(["dpkg-deb", "-b", "--root-owner-group", root_dir])
+    subprocess.check_call(["fakeroot", "dpkg-deb", "-b", root_dir])
 
 
 def main():
