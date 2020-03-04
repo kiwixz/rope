@@ -5,16 +5,19 @@ import os
 import shutil
 import subprocess
 
-REF = "v1.0"
-VERSION = "1.0"
+VERSION = "1.1"
 
 
 def build():
     repo_dir = "build/foundry"
-    if not os.path.exists(repo_dir):
+    if os.path.exists(repo_dir):
+        subprocess.check_call(["git", "-C", repo_dir, "fetch"])
+        subprocess.check_call(["git", "-C", repo_dir, "checkout", VERSION])
+    else:
         os.makedirs(repo_dir)
-        subprocess.check_call(["git", "clone", "-b", REF, "https://github.com/kiwixz/foundry", repo_dir])
-        subprocess.check_call(["./build/foundry/kiosevka/build.py"])
+        subprocess.check_call(["git", "clone", "-b", VERSION, "https://github.com/kiwixz/foundry", repo_dir])
+
+    subprocess.check_call([f"./{repo_dir}/kiosevka/make.py"])
 
 
 def package():
@@ -29,9 +32,9 @@ def package():
         with open(f"{debian_dir}/control", "w") as dst:
             dst.write(src.read().replace("{{version}}", VERSION))
 
-    shutil.copytree("build/foundry/kiosevka/build/kiosevka/ttf", f"{root_dir}/usr/share/fonts/kiosevka")
+    shutil.copytree("build/foundry/kiosevka/build/ttf", f"{root_dir}/usr/share/fonts/kiosevka")
 
-    subprocess.check_call(["dpkg-deb", "-b", root_dir])
+    subprocess.check_call(["dpkg-deb", "-b", "--root-owner-group", root_dir])
 
 
 def main():
