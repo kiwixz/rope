@@ -1,4 +1,4 @@
-FROM debian:bullseye-slim
+FROM {{base_image}}
 
 RUN apt update  \
     && apt -y full-upgrade  \
@@ -6,7 +6,7 @@ RUN apt update  \
         git openssh-client  \
         cargo make  \
         cmake g++ pkg-config python3  \
-        libexpat1-dev libfontconfig1-dev libfreetype-dev libxcb-xfixes0-dev
+        {{apt_libs}}
 
 ARG REF=master
 RUN git clone --branch=$REF "https://github.com/alacritty/alacritty" "/root/alacritty"

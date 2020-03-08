@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import glob
 import os
 import subprocess
 
@@ -10,13 +9,32 @@ REF = "v0.4.1"
 VERSION = "0.4.1"
 
 
+DISTS = {
+    "bullseye": {
+        "base_image": "debian:bullseye-slim",
+        "apt_libs": "libexpat1-dev libfontconfig1-dev libfreetype-dev libxcb-xfixes0-dev",
+    },
+    "bionic": {
+        "base_image": "ubuntu:bionic",
+        "apt_libs": "libexpat1-dev libfontconfig1-dev libfreetype6-dev libxcb-xfixes0-dev",
+    },
+}
+
+
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    for dockerfile in glob.glob("*.Dockerfile"):
-        dist = dockerfile.split(".")[0]
-        image_tag = f"{IMAGE_TAG_BASE}_{dist}"
+    for dist, dist_env in DISTS.items():
+        dockerfile = f"build/{dist}.Dockerfile"
+        os.makedirs("build", exist_ok=True)
+        with open("Dockerfile") as src:
+            with open(dockerfile, "w") as dst:
+                data = src.read()
+                for key, value in dist_env.items():
+                    data = data.replace(f"{{{{{key}}}}}", value)
+                dst.write(data)
 
+        image_tag = f"{IMAGE_TAG_BASE}_{dist}"
         subprocess.check_call(
             [
                 "docker",
