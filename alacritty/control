@@ -1,0 +1,5 @@
+Package: alacritty
+Version: {{version}}
+Description: alacritty
+Maintainer: kiwixz
+Architecture: amd64
