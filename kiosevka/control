@@ -1,5 +1,5 @@
 Package: kiosevka
 Version: {{version}}
+Architecture: all
 Description: kiosevka
 Maintainer: kiwixz
-Architecture: all

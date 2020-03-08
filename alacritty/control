@@ -1,5 +1,7 @@
 Package: alacritty
 Version: {{version}}
+Architecture: amd64
 Description: alacritty
 Maintainer: kiwixz
-Architecture: amd64
+Depends: libexpat1, libfreetype6, libxcb1
+Provides: x-terminal-emulator
