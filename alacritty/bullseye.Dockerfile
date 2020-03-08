@@ -5,7 +5,8 @@ RUN apt update  \
     && apt -y install  \
         git openssh-client  \
         cargo make  \
-        cmake g++ libexpat1-dev libfreetype-dev libxcb-xfixes0-dev pkg-config python3
+        cmake g++ pkg-config python3  \
+        libexpat1-dev libfontconfig1-dev libfreetype-dev libxcb-xfixes0-dev
 
 ARG REF=master
 RUN git clone --branch=$REF "https://github.com/alacritty/alacritty" "/root/alacritty"

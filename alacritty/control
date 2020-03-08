@@ -3,5 +3,5 @@ Version: {{version}}
 Architecture: amd64
 Description: alacritty
 Maintainer: kiwixz
-Depends: libexpat1, libfreetype6, libxcb1
+Depends: libexpat1, libfontconfig1, libfreetype6, libxcb1
 Provides: x-terminal-emulator
