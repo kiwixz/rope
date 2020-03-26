@@ -1,0 +1,5 @@
+Package: clang-{{major}}
+Version: {{version}}
+Architecture: amd64
+Description: clang
+Maintainer: kiwixz
