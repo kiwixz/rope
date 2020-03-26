@@ -12,17 +12,17 @@ VERSION = "10.0.0"
 DISTS = {
     "bullseye": {
         "base_image": "debian:bullseye-slim",
-        "apt_libs": "libexpat1-dev libfontconfig1-dev libfreetype-dev libxcb-xfixes0-dev",
     },
     "bionic": {
         "base_image": "ubuntu:bionic",
-        "apt_libs": "libexpat1-dev libfontconfig1-dev libfreetype6-dev libxcb-xfixes0-dev",
     },
 }
 
 
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
+    major = VERSION.split(".", 1)[0]
 
     for dist, dist_env in DISTS.items():
         dockerfile = f"build/{dist}.Dockerfile"
@@ -35,7 +35,6 @@ def main():
                 dst.write(data)
 
         image_tag = f"{IMAGE_TAG_BASE}_{dist}"
-        major = VERSION.split(".", 1)[0]
         subprocess.check_call(
             [
                 "docker",
