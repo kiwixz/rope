@@ -47,6 +47,8 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && mkdir -p "/root/clang-$MAJOR-$VERSION/usr/bin/"  \
     && cp "bin/clang-$MAJOR" "/root/clang-$MAJOR-$VERSION/usr/bin/"  \
     && ln -s "clang-$MAJOR" "/root/clang-$MAJOR-$VERSION/usr/bin/clang++-$MAJOR"  \
+    && mkdir -p "/root/clang-$MAJOR-$VERSION/usr/lib/"  \
+    && cp -R "lib/clang/" "/root/clang-$MAJOR-$VERSION/usr/lib/"  \
     && dpkg-deb -b "/root/clang-$MAJOR-$VERSION"  \
     \
     && mkdir -p "/root/clang-tools-$VERSION/usr/bin/"  \
