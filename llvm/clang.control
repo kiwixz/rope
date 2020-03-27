@@ -5,3 +5,4 @@ Description: clang {{major}}
 Maintainer: kiwixz
 Depends: libz3-4
 Recommends: g++
+Replaces: clang-{{major}}

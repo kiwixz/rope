@@ -4,3 +4,4 @@ Architecture: amd64
 Description: clang meta package
 Maintainer: kiwixz
 Depends: k-clang-{{major}}
+Replaces: clang

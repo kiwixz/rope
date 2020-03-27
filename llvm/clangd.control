@@ -3,3 +3,4 @@ Version: {{version}}
 Architecture: amd64
 Description: clangd {{major}}
 Maintainer: kiwixz
+Replaces: clangd-{{major}}

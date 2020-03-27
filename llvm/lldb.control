@@ -4,3 +4,4 @@ Architecture: amd64
 Description: lldb
 Maintainer: kiwixz
 Depends: libz3-4
+Replaces: lldb

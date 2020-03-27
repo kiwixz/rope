@@ -3,3 +3,4 @@ Version: {{version}}
 Architecture: amd64
 Description: clang tools {{major}}
 Maintainer: kiwixz
+Replaces: clang-format-{{major}}, clang-tidy-{{major}}

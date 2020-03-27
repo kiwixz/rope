@@ -4,3 +4,4 @@ Architecture: amd64
 Description: lld
 Maintainer: kiwixz
 Depends: libz3-4
+Replaces: lld
