@@ -3,4 +3,5 @@ Version: {{version}}
 Architecture: amd64
 Description: clang tools {{major}}
 Maintainer: kiwixz
+Depends: libz3-4
 Replaces: clang-format-{{major}}, clang-tidy-{{major}}
