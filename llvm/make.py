@@ -22,7 +22,7 @@ def main():
         "rope_llvm",
         {
             "bullseye": {"base_image": "debian:bullseye-slim"},
-            # "bionic": {"base_image": "ubuntu:bionic"},
+            "bionic": {"base_image": "ubuntu:bionic"},
         },
         {"REF": f"llvmorg-{version}", "VERSION": version, "MAJOR": major},
         [*meta_packages(["clang", "clang-tools", "clangd"], major, version), f"lld-{version}", f"lldb-{version}"],
