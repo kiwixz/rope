@@ -69,6 +69,7 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     \
     && mkdir -p "/root/lld-$VERSION/usr/bin/"  \
     && cp "bin/lld" "/root/lld-$VERSION/usr/bin/"  \
+    && ln -s "lld" "/root/lld-$VERSION/usr/bin/ld.lld"  \
     && dpkg-deb -b "/root/lld-$VERSION"  \
     \
     && mkdir -p "/root/lldb-$VERSION/usr/bin/"  \
