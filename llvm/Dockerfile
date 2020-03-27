@@ -72,5 +72,9 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && dpkg-deb -b "/root/lld-$VERSION"  \
     \
     && mkdir -p "/root/lldb-$VERSION/usr/bin/"  \
-    && cp "bin/lldb" "/root/lldb-$VERSION/usr/bin/"  \
+    && cp "bin/lldb" "bin/lldb-server" "/root/lldb-$VERSION/usr/bin/"  \
+    && mkdir -p "/root/lldb-$VERSION/usr/lib/"  \
+    && cp "lib/liblldb.so.$VERSION" "/root/lldb-$VERSION/usr/lib/"  \
+    && ln -s "liblldb.so.$VERSION" "/root/lldb-$VERSION/usr/lib/liblldb.so.$MAJOR"  \
+    && ln -s "liblldb.so.$MAJOR" "/root/lldb-$VERSION/usr/lib/liblldb.so"  \
     && dpkg-deb -b "/root/lldb-$VERSION"
