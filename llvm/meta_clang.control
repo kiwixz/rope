@@ -1,4 +1,4 @@
-Package: clang
+Package: k-clang
 Version: {{version}}
 Architecture: amd64
 Description: clang meta package
