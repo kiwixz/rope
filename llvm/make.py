@@ -2,9 +2,14 @@
 
 import os
 import sys
+from typing import List
 
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import utils
+
+
+def meta_packages(names: List[str], major: str, version: str):
+    return (a for name in names for a in (f"{name}-{version}", f"{name}-{major}-{version}"))
 
 
 def main():
@@ -19,8 +24,8 @@ def main():
             "bullseye": {"base_image": "debian:bullseye-slim"},
             # "bionic": {"base_image": "ubuntu:bionic"},
         },
-        {"REF": "llvmorg-10.0.0", "VERSION": version, "MAJOR": major},
-        [f"clang-{version}", f"clang-{major}-{version}"],
+        {"REF": f"llvmorg-{version}", "VERSION": version, "MAJOR": major},
+        [*meta_packages(["clang", "clang-tools", "clangd"], major, version), f"lld-{version}", f"lldb-{version}"],
     )
 
 

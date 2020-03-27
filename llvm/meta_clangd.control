@@ -1,0 +1,6 @@
+Package: k-clangd
+Version: {{version}}
+Architecture: amd64
+Description: clangd meta package
+Maintainer: kiwixz
+Depends: clangd-{{major}}

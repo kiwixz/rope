@@ -1,5 +1,5 @@
-Package: k-clang-{{major}}
+Package: k-lld
 Version: {{version}}
 Architecture: amd64
-Description: clang {{major}}
+Description: lld
 Maintainer: kiwixz

@@ -1,0 +1,5 @@
+Package: k-clang-tools-{{major}}
+Version: {{version}}
+Architecture: amd64
+Description: clang tools {{major}}
+Maintainer: kiwixz

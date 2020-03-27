@@ -1,5 +1,5 @@
-Package: k-clang-{{major}}
+Package: k-lldb
 Version: {{version}}
 Architecture: amd64
-Description: clang {{major}}
+Description: lldb
 Maintainer: kiwixz

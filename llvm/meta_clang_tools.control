@@ -1,0 +1,6 @@
+Package: k-clang-tools
+Version: {{version}}
+Architecture: amd64
+Description: clang tools meta package
+Maintainer: kiwixz
+Depends: clang-tools-{{major}}
