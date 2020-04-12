@@ -1,0 +1,6 @@
+Package: libncurses
+Version: {{version}}
+Architecture: amd64
+Description: libncurses
+Maintainer: kiwixz
+Depends: libncurses{{version}}
