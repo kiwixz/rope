@@ -1,0 +1,6 @@
+Package: libpython3
+Version: {{version}}
+Architecture: amd64
+Description: libpython3
+Maintainer: kiwixz
+Depends: libpython{{version}}
