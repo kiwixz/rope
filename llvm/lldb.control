@@ -3,5 +3,5 @@ Version: {{version}}
 Architecture: amd64
 Description: lldb
 Maintainer: kiwixz
-Depends: libncurses, libz3-4
+Depends: libedit2, libncurses, libpython3, libxml2, libz3-4
 Replaces: lldb

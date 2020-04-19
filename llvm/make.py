@@ -21,8 +21,8 @@ def main():
     utils.matrix_docker_build(
         "rope_llvm",
         {
-            "bullseye": {"base_image": "debian:bullseye-slim"},
-            "bionic": {"base_image": "ubuntu:bionic"},
+            "bullseye": {"base_image": "debian:bullseye-slim", "local_llvm": "10"},
+            "bionic": {"base_image": "ubuntu:bionic", "local_llvm": "9"},
         },
         {"REF": f"llvmorg-{version}", "VERSION": version, "MAJOR": major},
         [*meta_packages(["clang", "clang-tools", "clangd"], major, version), f"lld-{version}", f"lldb-{version}"],

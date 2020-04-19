@@ -2,16 +2,19 @@ FROM {{base_image}}
 
 RUN apt update  \
     && apt -y full-upgrade  \
-    && apt -y install  \
-        git openssh-client  \
-        cmake clang g++ lld ninja-build
+    && apt -y --no-install-recommends install  \
+        git ca-certificates  \
+        cmake clang-{{local_llvm}} g++ lld-{{local_llvm}} ninja-build  \
+        libedit-dev liblzma-dev libncurses-dev libpfm4-dev  \
+            libpython3-dev libxml2-dev libz3-dev python3 swig zlib1g-dev  \
+        python3-distutils python3-pygments python3-yaml
 
 ARG REF=master
 RUN git clone --branch=$REF "https://github.com/llvm/llvm-project" "/root/llvm"  \
     && mkdir "/root/llvm/build"
 WORKDIR "/root/llvm/build"
 
-RUN CC="clang" CXX="clang++" cmake -G "Ninja"  \
+RUN CC="clang-{{local_llvm}}" CXX="clang++-{{local_llvm}}" cmake -G "Ninja"  \
         -D "CMAKE_BUILD_TYPE=Release"  \
         -D "LLVM_ENABLE_PROJECTS=clang;clang-tools-extra;compiler-rt;lld;lldb"  \
         -D "LLVM_ENABLE_LLD=ON"  \
