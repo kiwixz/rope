@@ -25,7 +25,12 @@ def main():
             "bionic": {"base_image": "ubuntu:bionic", "local_llvm": "9"},
         },
         {"REF": f"llvmorg-{version}", "VERSION": version, "MAJOR": major},
-        [*meta_packages(["clang", "clang-tools", "clangd"], major, version), f"lld-{version}", f"lldb-{version}"],
+        [
+            *meta_packages(["clang", "clang-tools", "clangd"], major, version),
+            f"clang-rt-{major}-{version}",
+            f"lld-{version}",
+            f"lldb-{version}",
+        ],
     )
 
 

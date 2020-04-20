@@ -1,0 +1,5 @@
+Package: k-clang-rt-{{major}}
+Version: {{version}}
+Architecture: amd64
+Description: clang-rt {{major}}
+Maintainer: kiwixz

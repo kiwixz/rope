@@ -3,6 +3,6 @@ Version: {{version}}
 Architecture: amd64
 Description: clang {{major}}
 Maintainer: kiwixz
-Depends: libz3-4
+Depends: k-clang-rt-{{major}}, libz3-4
 Recommends: g++
 Replaces: clang-{{major}}

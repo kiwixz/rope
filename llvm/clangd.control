@@ -3,5 +3,5 @@ Version: {{version}}
 Architecture: amd64
 Description: clangd {{major}}
 Maintainer: kiwixz
-Depends: libz3-4
+Depends: k-clang-rt-{{major}}, libz3-4
 Replaces: clangd-{{major}}
