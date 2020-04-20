@@ -4,4 +4,4 @@ Architecture: amd64
 Description: clangd meta package
 Maintainer: kiwixz
 Depends: k-clangd-{{major}}
-Replaces: clangd
+Conflicts: clangd

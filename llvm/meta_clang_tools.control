@@ -4,4 +4,4 @@ Architecture: amd64
 Description: clang tools meta package
 Maintainer: kiwixz
 Depends: k-clang-tools-{{major}}
-Replaces: clang-format, clang-tidy
+Conflicts: clang-format, clang-tidy
