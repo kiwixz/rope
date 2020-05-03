@@ -2,8 +2,8 @@ FROM {{base_image}}
 
 RUN apt update  \
     && apt -y full-upgrade  \
-    && apt -y install  \
-        git openssh-client  \
+    && apt -y --no-install-recommends install  \
+        git ca-certificates  \
         cargo make  \
         cmake g++ pkg-config python3  \
         {{apt_libs}}
@@ -28,7 +28,7 @@ RUN sed -i "s/{{version}}/$VERSION/g" "/root/alacritty-$VERSION/DEBIAN/control" 
         "/root/alacritty-$VERSION/usr/share/fish/completions/"  \
         "/root/alacritty-$VERSION/usr/share/zsh/vendor-completions/"  \
     && cp "target/release/alacritty" "/root/alacritty-$VERSION/usr/bin/"  \
-    && cp "extra/linux/alacritty.desktop" "/root/alacritty-$VERSION/usr/share/applications/"  \
+    && cp "extra/linux/Alacritty.desktop" "/root/alacritty-$VERSION/usr/share/applications/"  \
     && cp "extra/logo/alacritty-term.svg" "/root/alacritty-$VERSION/usr/share/pixmaps/Alacritty.svg"  \
     && cp "extra/completions/alacritty.bash" "/root/alacritty-$VERSION/usr/share/bash-completion/completions/"  \
     && cp "extra/completions/alacritty.fish" "/root/alacritty-$VERSION/usr/share/fish/completions/"  \

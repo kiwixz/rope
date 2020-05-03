@@ -10,7 +10,7 @@ import utils
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    version = "0.4.1"
+    version = "0.4.2"
 
     utils.matrix_docker_build(
         "rope_alacritty",
