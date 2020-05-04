@@ -19,7 +19,7 @@ COPY "control" "/root/alacritty-$VERSION/DEBIAN/"
 
 RUN sed -i "s/{{version}}/$VERSION/g" "/root/alacritty-$VERSION/DEBIAN/control"  \
     && cp "extra/linux/debian/prerm" "/root/alacritty-$VERSION/DEBIAN/"  \
-    && sed -E "s/^(update-alternatives.*) [0-9]+$/\\1 50/g"  \
+    && sed -E "s/^(update-alternatives.*) [0-9]+$/\\1 100/g"  \
         "extra/linux/debian/postinst" > "/root/alacritty-$VERSION/DEBIAN/postinst"  \
     && chmod +x "/root/alacritty-$VERSION/DEBIAN/postinst" "/root/alacritty-$VERSION/DEBIAN/prerm"  \
     && mkdir -p  \
