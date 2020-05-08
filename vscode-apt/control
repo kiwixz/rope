@@ -1,0 +1,5 @@
+Package: vscode-apt
+Version: {{version}}
+Architecture: amd64
+Description: APT repository for vscode
+Maintainer: kiwixz
