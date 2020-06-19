@@ -5,3 +5,4 @@ Description: clangd meta package
 Maintainer: kiwixz
 Depends: k-clangd-{{major}}
 Conflicts: clangd
+Provides: clangd

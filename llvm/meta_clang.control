@@ -5,3 +5,4 @@ Description: clang meta package
 Maintainer: kiwixz
 Depends: k-clang-{{major}}
 Conflicts: clang
+Provides: clang

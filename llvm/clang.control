@@ -6,3 +6,4 @@ Maintainer: kiwixz
 Depends: k-clang-rt-{{major}}, libz3-4
 Recommends: g++
 Conflicts: clang-{{major}}
+Provides: clang-{{major}}

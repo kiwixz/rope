@@ -5,3 +5,4 @@ Description: clangd {{major}}
 Maintainer: kiwixz
 Depends: k-clang-rt-{{major}}, libz3-4
 Conflicts: clangd-{{major}}
+Provides: clangd-{{major}}

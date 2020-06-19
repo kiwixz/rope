@@ -5,3 +5,4 @@ Description: clang tools meta package
 Maintainer: kiwixz
 Depends: k-clang-tools-{{major}}
 Conflicts: clang-format, clang-tidy
+Provides: clang-format, clang-tidy

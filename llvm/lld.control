@@ -5,3 +5,4 @@ Description: lld
 Maintainer: kiwixz
 Depends: libxml2, libz3-4
 Conflicts: lld
+Provides: lld

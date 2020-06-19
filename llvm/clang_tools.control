@@ -5,3 +5,4 @@ Description: clang tools {{major}}
 Maintainer: kiwixz
 Depends: libz3-4
 Conflicts: clang-format-{{major}}, clang-tidy-{{major}}
+Provides: clang-format-{{major}}, clang-tidy-{{major}}

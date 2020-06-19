@@ -5,3 +5,4 @@ Description: lldb
 Maintainer: kiwixz
 Depends: libedit2, libncurses, libpython3, libxml2, libz3-4
 Conflicts: lldb
+Provides: lldb
