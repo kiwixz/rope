@@ -3,4 +3,5 @@ Version: {{version}}
 Architecture: amd64
 Description: llvm tools
 Maintainer: kiwixz
+Depends: libz3-4
 Conflicts: llvm-{{major}}
