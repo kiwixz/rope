@@ -30,10 +30,12 @@ COPY "clang_tools.control" "/root/clang-tools-$MAJOR-$VERSION/DEBIAN/control"
 COPY "clangd.control" "/root/clangd-$MAJOR-$VERSION/DEBIAN/control"
 COPY "lld.control" "/root/lld-$VERSION/DEBIAN/control"
 COPY "lldb.control" "/root/lldb-$VERSION/DEBIAN/control"
+COPY "llvm_tools.control" "/root/llvm-tools-$VERSION/DEBIAN/control"
 COPY "meta_clang.control" "/root/clang-$VERSION/DEBIAN/control"
 COPY "meta_clang_tools.control" "/root/clang-tools-$VERSION/DEBIAN/control"
 COPY "meta_clangd.control" "/root/clangd-$VERSION/DEBIAN/control"
 
+SHELL ["/bin/bash", "-c"]
 RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
         "/root/clang-$VERSION/DEBIAN/control"  \
         "/root/clang-$MAJOR-$VERSION/DEBIAN/control"  \
@@ -44,6 +46,7 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
         "/root/clangd-$MAJOR-$VERSION/DEBIAN/control"  \
         "/root/lld-$VERSION/DEBIAN/control"  \
         "/root/lldb-$VERSION/DEBIAN/control"  \
+        "/root/llvm-tools-$VERSION/DEBIAN/control"  \
     \
     && mkdir -p "/root/clang-$VERSION/usr/bin/"  \
     && ln -s "clang-$MAJOR" "/root/clang-$VERSION/usr/bin/clang"  \
@@ -80,9 +83,14 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && dpkg-deb -b "/root/lld-$VERSION"  \
     \
     && mkdir -p "/root/lldb-$VERSION/usr/bin/"  \
-    && cp "bin/lldb" "bin/lldb-server" "bin/lldb-vscode" "/root/lldb-$VERSION/usr/bin/"  \
+    && cp bin/lldb{,-server,-vscode} "/root/lldb-$VERSION/usr/bin/"  \
     && mkdir -p "/root/lldb-$VERSION/usr/lib/"  \
     && cp "lib/liblldb.so.$VERSION" "/root/lldb-$VERSION/usr/lib/"  \
     && ln -s "liblldb.so.$VERSION" "/root/lldb-$VERSION/usr/lib/liblldb.so.$MAJOR"  \
     && ln -s "liblldb.so.$MAJOR" "/root/lldb-$VERSION/usr/lib/liblldb.so"  \
-    && dpkg-deb -b "/root/lldb-$VERSION"
+    && dpkg-deb -b "/root/lldb-$VERSION"  \
+    \
+    && mkdir -p "/root/llvm-tools-$VERSION/usr/bin/"  \
+    && cp bin/llvm-{addr2line,cxx{dump,filt},dwarfdump,nm,objcopy,objdump,readelf,readobj,size,strings,strip,symbolizer}  \
+        "/root/llvm-tools-$VERSION/usr/bin/"  \
+    && dpkg-deb -b "/root/llvm-tools-$VERSION"

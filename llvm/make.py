@@ -30,6 +30,7 @@ def main():
             f"clang-rt-{major}-{version}",
             f"lld-{version}",
             f"lldb-{version}",
+            f"llvm-tools-{version}",
         ],
     )
 

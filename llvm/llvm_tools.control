@@ -1,0 +1,6 @@
+Package: k-llvm-tools
+Version: {{version}}
+Architecture: amd64
+Description: llvm tools
+Maintainer: kiwixz
+Conflicts: llvm-{{major}}
