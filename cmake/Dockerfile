@@ -27,4 +27,5 @@ RUN MAJOR_MINOR="${VERSION%.*}"  \
     && cp bin/c{{,c}make,pack,test} "/root/cmake-$VERSION/usr/bin/"  \
     && cp -r ../{Modules,Templates} "/root/cmake-$VERSION/usr/share/cmake-$MAJOR_MINOR/"  \
     && cp ../Auxiliary/bash-completion/c{make,pack,test} "/root/cmake-$VERSION/usr/share/bash-completion/completions/"  \
+    && strip /root/cmake-$VERSION/usr/bin/*  \
     && dpkg-deb -b "/root/cmake-$VERSION"

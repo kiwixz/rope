@@ -35,4 +35,5 @@ RUN sed -i "s/{{version}}/$VERSION/g" "/root/alacritty-$VERSION/DEBIAN/control" 
     && cp "extra/completions/alacritty.bash" "/root/alacritty-$VERSION/usr/share/bash-completion/completions/"  \
     && cp "extra/completions/alacritty.fish" "/root/alacritty-$VERSION/usr/share/fish/completions/"  \
     && cp "extra/completions/_alacritty" "/root/alacritty-$VERSION/usr/share/zsh/vendor-completions/"  \
+    && strip /root/alacritty-$VERSION/usr/bin/*  \
     && dpkg-deb -b "/root/alacritty-$VERSION"

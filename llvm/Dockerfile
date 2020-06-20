@@ -54,6 +54,7 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && dpkg-deb -b "/root/clang-$VERSION"  \
     && mkdir -p "/root/clang-$MAJOR-$VERSION/usr/bin/"  \
     && cp "bin/clang-$MAJOR" "/root/clang-$MAJOR-$VERSION/usr/bin/"  \
+    && strip /root/clang-$MAJOR-$VERSION/usr/bin/*  \
     && ln -s "clang-$MAJOR" "/root/clang-$MAJOR-$VERSION/usr/bin/clang++-$MAJOR"  \
     && dpkg-deb -b "/root/clang-$MAJOR-$VERSION"  \
     \
@@ -68,6 +69,7 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && mkdir -p "/root/clang-tools-$MAJOR-$VERSION/usr/bin/"  \
     && cp "bin/clang-format" "/root/clang-tools-$MAJOR-$VERSION/usr/bin/clang-format-$MAJOR"  \
     && cp "bin/clang-tidy" "/root/clang-tools-$MAJOR-$VERSION/usr/bin/clang-tidy-$MAJOR"  \
+    && strip /root/clang-tools-$MAJOR-$VERSION/usr/bin/*  \
     && dpkg-deb -b "/root/clang-tools-$MAJOR-$VERSION"  \
     \
     && mkdir -p "/root/clangd-$VERSION/usr/bin/"  \
@@ -75,15 +77,18 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && dpkg-deb -b "/root/clangd-$VERSION"  \
     && mkdir -p "/root/clangd-$MAJOR-$VERSION/usr/bin/"  \
     && cp "bin/clangd" "/root/clangd-$MAJOR-$VERSION/usr/bin/clangd-$MAJOR"  \
+    && strip /root/clangd-$MAJOR-$VERSION/usr/bin/*  \
     && dpkg-deb -b "/root/clangd-$MAJOR-$VERSION"  \
     \
     && mkdir -p "/root/lld-$VERSION/usr/bin/"  \
     && cp "bin/lld" "/root/lld-$VERSION/usr/bin/"  \
+    && strip /root/lld-$VERSION/usr/bin/*  \
     && ln -s "lld" "/root/lld-$VERSION/usr/bin/ld.lld"  \
     && dpkg-deb -b "/root/lld-$VERSION"  \
     \
     && mkdir -p "/root/lldb-$VERSION/usr/bin/"  \
     && cp bin/lldb{,-server,-vscode} "/root/lldb-$VERSION/usr/bin/"  \
+    && strip /root/lldb-$VERSION/usr/bin/*  \
     && mkdir -p "/root/lldb-$VERSION/usr/lib/"  \
     && cp "lib/liblldb.so.$VERSION" "/root/lldb-$VERSION/usr/lib/"  \
     && ln -s "liblldb.so.$VERSION" "/root/lldb-$VERSION/usr/lib/liblldb.so.$MAJOR"  \
@@ -93,4 +98,5 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && mkdir -p "/root/llvm-tools-$VERSION/usr/bin/"  \
     && cp bin/llvm-{addr2line,cxx{dump,filt},dwarfdump,nm,objcopy,objdump,readelf,readobj,size,strings,strip,symbolizer}  \
         "/root/llvm-tools-$VERSION/usr/bin/"  \
+    && strip /root/llvm-tools-$VERSION/usr/bin/*  \
     && dpkg-deb -b "/root/llvm-tools-$VERSION"
