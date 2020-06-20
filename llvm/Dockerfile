@@ -1,8 +1,7 @@
 FROM {{base_image}}
 
 RUN apt update  \
-    && apt -y full-upgrade  \
-    && apt -y --no-install-recommends install  \
+    && apt -y --no-install-recommends upgrade  \
         git ca-certificates  \
         cmake clang-{{local_llvm}} g++ lld-{{local_llvm}} ninja-build  \
         libedit-dev liblzma-dev libncurses-dev libpfm4-dev  \

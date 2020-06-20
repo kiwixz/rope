@@ -22,7 +22,7 @@ def main():
         "rope_llvm",
         {
             "bullseye": {"base_image": "debian:bullseye-slim", "local_llvm": "10"},
-            "bionic": {"base_image": "ubuntu:bionic", "local_llvm": "9"},
+            "bionic": {"base_image": "ubuntu:bionic", "local_llvm": "10"},
         },
         {"REF": f"llvmorg-{version}", "VERSION": version, "MAJOR": major},
         [
