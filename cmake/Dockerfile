@@ -8,20 +8,22 @@ RUN apt update  \
 
 ARG REF=master
 RUN git clone --branch=$REF "https://gitlab.kitware.com/cmake/cmake" "/root/cmake"
-WORKDIR "/root/cmake"
+WORKDIR "/root/cmake/build"
 
 RUN PARALLEL=$(($(nproc) + 2))  \
     && CC=clang-10 CXX=clang++-10  \
         CXXFLAGS="-flto=thin -fuse-ld=lld -Wno-unused-command-line-argument"  \
         CFLAGS="$CXXFLAGS"  \
-        ./bootstrap --parallel=$PARALLEL \
+        ../bootstrap --parallel=$PARALLEL \
     && make -j $PARALLEL
 
 ARG VERSION=$REF
 COPY "control" "/root/cmake-$VERSION/DEBIAN/"
 
 SHELL ["/bin/bash", "-c"]
-RUN sed -i "s/{{version}}/$VERSION/g" "/root/cmake-$VERSION/DEBIAN/control"  \
-    && mkdir -p "/root/cmake-$VERSION/usr/bin/"  \
+RUN MAJOR_MINOR="${VERSION%.*}"  \
+    && sed -i "s/{{version}}/$VERSION/g" "/root/cmake-$VERSION/DEBIAN/control"  \
+    && mkdir -p /root/cmake-$VERSION/usr/{bin,share/cmake-$MAJOR_MINOR}/  \
     && cp bin/c{{,c}make,pack,test} "/root/cmake-$VERSION/usr/bin/"  \
+    && cp -r "../Modules" "/root/cmake-$VERSION/usr/share/cmake-$MAJOR_MINOR/"  \
     && dpkg-deb -b "/root/cmake-$VERSION"
