@@ -23,7 +23,8 @@ COPY "control" "/root/cmake-$VERSION/DEBIAN/"
 SHELL ["/bin/bash", "-c"]
 RUN MAJOR_MINOR="${VERSION%.*}"  \
     && sed -i "s/{{version}}/$VERSION/g" "/root/cmake-$VERSION/DEBIAN/control"  \
-    && mkdir -p /root/cmake-$VERSION/usr/{bin,share/cmake-$MAJOR_MINOR}/  \
+    && mkdir -p /root/cmake-$VERSION/usr/{bin,share/{cmake-$MAJOR_MINOR,bash-completion/completions}}/  \
     && cp bin/c{{,c}make,pack,test} "/root/cmake-$VERSION/usr/bin/"  \
     && cp -r ../{Modules,Templates} "/root/cmake-$VERSION/usr/share/cmake-$MAJOR_MINOR/"  \
+    && cp ../Auxiliary/bash-completion/c{make,pack,test} "/root/cmake-$VERSION/usr/share/bash-completion/completions/"  \
     && dpkg-deb -b "/root/cmake-$VERSION"
