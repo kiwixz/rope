@@ -3,6 +3,6 @@ Version: {{version}}
 Architecture: amd64
 Description: cmake
 Maintainer: kiwixz
-Depends: libssl1.1
+Depends: libncurses, libssl1.1
 Conflicts: cmake
 Provides: cmake
