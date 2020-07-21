@@ -15,7 +15,7 @@ def meta_packages(names: List[str], major: str, version: str):
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    version = "10.0.0"
+    version = "10.0.1"
     major = version.split(".", 1)[0]
 
     utils.matrix_docker_build(
