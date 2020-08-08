@@ -95,7 +95,7 @@ RUN sed -i "s/{{version}}/$VERSION/g; s/{{major}}/$MAJOR/g"  \
     && dpkg-deb -b "/root/lldb-$VERSION"  \
     \
     && mkdir -p "/root/llvm-tools-$VERSION/usr/bin/"  \
-    && cp bin/llvm-{addr2line,cxx{dump,filt},dwarfdump,nm,objcopy,objdump,readelf,readobj,size,strings,strip,symbolizer}  \
+    && cp bin/llvm-{addr2line,ar,cxx{dump,filt},dwarfdump,nm,objcopy,objdump,ranlib,readelf,readobj,size,strings,strip,symbolizer}  \
         "/root/llvm-tools-$VERSION/usr/bin/"  \
     && strip /root/llvm-tools-$VERSION/usr/bin/*  \
     && dpkg-deb -b "/root/llvm-tools-$VERSION"
