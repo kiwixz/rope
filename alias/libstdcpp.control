@@ -1,0 +1,6 @@
+Package: libstdcpp-dev
+Version: {{version}}
+Architecture: amd64
+Description: libstdc++-dev
+Maintainer: kiwixz
+Depends: libstdc++-{{version}}-dev

@@ -14,11 +14,11 @@ def main():
     utils.matrix_docker_build(
         "rope_alias",
         {
-            "bullseye": {"base_image": "debian:bullseye-slim", "ncurses_version": "6", "py_version": "3.8"},
-            "bionic": {"base_image": "ubuntu:bionic", "ncurses_version": "5", "py_version": "3.6"},
+            "bullseye": {"base_image": "debian:bullseye-slim", "gcc_version": "10", "ncurses_version": "6", "py_version": "3.8"},
+            "bionic": {"base_image": "ubuntu:bionic", "gcc_version": "8", "ncurses_version": "5", "py_version": "3.6"},
         },
         {},
-        ["libncurses", "libpython3"],
+        ["libstdcpp-dev", "libncurses", "libpython3"],
     )
 
 
