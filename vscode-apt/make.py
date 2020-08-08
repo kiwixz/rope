@@ -11,7 +11,7 @@ import utils
 def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    version = "1.0"
+    version = "1.1"
     utils.matrix_docker_build(
         "vscode_alias",
         {
