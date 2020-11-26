@@ -5,7 +5,7 @@ import os
 import shutil
 import subprocess
 
-VERSION = "1.3"
+VERSION = "2.0.0"
 
 
 def build():
